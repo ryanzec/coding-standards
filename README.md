@@ -371,6 +371,18 @@ if(user.isActive == true) {
 
 All low level unit tests (non-UI) MUST be written with the Mocha/Chia/Sinon libraries and executed with the Karma test runner.  The test files themselves should live in a folder called tests that is in the folder with the code it is testing.  The test files should be the same name of the files that it is testing along with .spec.js at the end.
 
+You must use the expect BDD style of the Chai library.
+
+```javascript
+var test = "test";
+
+//good
+expect(test).to.be.a('string');
+
+//bad
+test.should.be.a('string');
+```
+
 ```
 |-- app/
 | |-- components/
