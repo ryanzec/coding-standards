@@ -380,6 +380,8 @@ All low level unit tests (non-UI) MUST be written with the Mocha/Chai/Sinon libr
 | | | |-- session-factory.js
 ```
 
+If you have a piece of code that has both javascript code and UI elements, the javascript code should be tested with Karma however Karma test should never have any test that are done against mocked HTML.
+
 You must use the ```expect``` BDD style of the Chai library.
 
 ```javascript
@@ -426,13 +428,17 @@ Anything that you might want to include in all the test files (variables, page o
 |-- Dalekfile.json
 ```
 
+If you have a piece of code that has both javascript code and UI elements, the UI elements should be tested with Dalek.  There will probably be a little it of overlap with the Karma tests but doing this will help determine with the problem is.
+
+Just as an example, if you have a Karma test that verifies that a component is properly loading data however the data is not displaying on the page in the Dalek test, then you know something in wrong with the display code (possibly the HTML) and not the javascript logic that load the data.
+
 ## AngularJS
 
 All the javascript standard apply to AngularJS code.  This section only contains standards that relate directly to AngularJS functionality.
 
 ### Structure
 
-AngularJS code should be structured into code that make re-usability easy.  Code should to organizationed into as small as possible components that can be easily copied from one application to another.  You should also move any code that can live as a plain javascript library and would be useful in multiple situations out of any AngularJS module.
+AngularJS code should be structured into code that make re-usability easy.  Code should to organized into as small as possible components that can be easily copied from one application to another.  You should also move any code that can live as a plain javascript library and would be useful in multiple situations out of any AngularJS module.
 
 For example, say you have a form max value validation directive that makes sure a input numeric value does not exceed a certain value.  Instead of doing the validation of the value directly inside the validation directive, you should extract the validation part of the code into a plain javascript library that just does data validation and then use that inside of the validation directive.  This way you can use the same data validation logic in multiple locations.
 
@@ -798,6 +804,34 @@ Values and Constants should be defined once per component in a file called ```va
 | | | |-- module.js
 | | | |-- values.js
 ```
+
+### Tests
+
+#### Karma Tests
+
+The following components will always have Karma tests and not Dalek tests since they never directly deal with the UI
+
+- services
+- filters
+- values
+
+The following components may have Karma tests however they should never be using mocked HTML, they should only test the functionality of the javascript (leave the HTML based tests to Dalek):
+
+- controllers
+- directives
+
+#### DalekJS Tests
+
+The following components should never have Dalek specific tests as they should never directly interact with the UI:
+
+- services
+- filters
+- values
+
+The following should always have Dalek tests as will always interact with the UI however Dalek should only be testing the visual aspect of these components as Karma will handle testing the javascript functionality.
+
+- controllers
+- directives
 
 ## SASS/CSS
 
