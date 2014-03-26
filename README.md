@@ -380,7 +380,7 @@ All low level unit tests (non-UI) MUST be written with the Mocha/Chai/Sinon libr
 | | | |-- session-factory.js
 ```
 
-If you have a piece of code that has both javascript code and UI elements, the javascript code should be tested with Karma however Karma test should never have any test that are done against mocked HTML.
+If you have a piece of code that has both javascript code and UI elements, the javascript code should be tested with Karma however Karma test should never have any tests that are done against mocked HTML.
 
 You must use the ```expect``` BDD style of the Chai library.
 
@@ -431,6 +431,113 @@ Anything that you might want to include in all the test files (variables, page o
 If you have a piece of code that has both javascript code and UI elements, the UI elements should be tested with Dalek.  There will probably be a little it of overlap with the Karma tests but doing this will help determine with the problem is.
 
 Just as an example, if you have a Karma test that verifies that a component is properly loading data however the data is not displaying on the page in the Dalek test, then you know something in wrong with the display code (possibly the HTML) and not the javascript logic that load the data.
+
+##### Page/Component Objects
+
+The test files should never directly call any actions or assertions on the test object itself.  All interactions with the test object should be done through the use of a page or component object.  If you need a starting point for building page and component objects with DalekJS, use/look at this project:
+
+https://github.com/ryanzec/dalek-angular-component-objects
+
+So lets take a look at what a regular test file might look like for an application that uses angular:
+
+```javascript
+//file: /dalek/live-chat.js
+var scripts = require('../client-scripts');
+
+module.exports = {
+  name: 'live chat component',
+
+  'should open new window when live chat is clicked': function(test) {
+    test.open('/home?uiTestingMode=true')
+    .waitFor(scripts.angular);
+    .click('.page > header .support .live-chat')
+    .waitFor(scripts.angular);
+    .toWindow('live-chat-window')
+    .assert.url().to.match(/livechat\.example\.com/, 'live chat window opened')
+    .toParentWindow()
+    .done();
+  }
+};
+```
+
+Now lets rewrite this test with the assumption we are using the base system mentioned above:
+
+```javascript
+//file: /dalek/lib/objects/components/live-chat.js
+var BaseComponent = require('../base-component');
+
+var LiveChatComponent = BaseComponent.extend({
+  initialize: function(test, baseSelector) {
+    this.baseSelector = baseSelector; 
+    this.selectors = {
+      liveChat: '.live-chat',
+    };
+
+    BaseComponent.initialize.call(this, test);
+  },
+
+  clickLiveChat: function() {
+    this.test.click(this.getSelector('liveChat'));
+    this.waitForAngular();
+  },
+});
+
+module.exports = LiveChatComponent;
+
+
+//file: /dalek/lib/objects/pages/home.js
+var BasePageObject = require('./base-page-object');
+var LiveChatComponent = require('./components/live-chat');
+
+var HomePage = BasePageObject.extend({
+  initialize: function(test, urlAppend) {
+    this.baseUrl = '/home?uiTestingMode=true';
+        
+    BasePageObject.initialize.call(this, test, urlAppend);
+  },
+  
+  getLiveChatComponent: function() {
+    return LiveChatComponent.new(this.test, '.page > header .support');
+  },
+    
+  liveChatWindowOpened: function() {
+    this.test.toWindow('live-chat-window');
+    this.test.assert.url().to.match(/livechat\.example\.com/, 'live chat window opened')
+    this.test.toParentWindow();
+  },
+});
+
+module.exports = HomePage;
+
+
+//file: /dalek/live-chat.js
+var HomePage = require('./lib/objects/pages/home');
+
+module.exports = {
+  name: 'live chat component',
+
+  'should open new window when live chat is clicked': function(test) {
+    var homePage = HomePage.new(test);
+    var liveChatComponent = homePage.getLiveChatComponent();
+    
+    liveChatComponent.clickLiveChat();
+    
+    homePage.liveChatWindowOpened();
+    
+    homePage.done();
+  }
+};
+```
+
+When looking at the just the test, the biggest advantage that can be seen is it is a lot clearer on what the test is doing.  While the test name clearly states what functionality is being tested, now you can clearly see what it is doing in order to test the functionality.  There are other advantages that might not be as apparent with this example.
+
+Using component objects make it easier to test the same functionality that might live on different pages.  If we take the live chat component example, that might live on every page however there might be an issue with it work on a specific page.  All you have to do is include the LiveChatComponent object in the other page test that is having issues so you don't have to duplicate all test code for that component.
+
+This structure also makes it so all your selectors are stored at the top of the page/component objects.  This makes it easy to find selectors and make changes if needed.
+
+You also have a place to normalize functionality that your application might need, for example with an AngularJS application.  In order to be able to test an AngularJS without having a bunch of ```wait()```'s or ```waitForElement()```'s is to be able to hook into AngularJS's ```$browser.notifyWhenNoOutstandingRequests()``` method.  Now you can have a place to normalize calling that so that if it changes, you can change one place instead of having it littered all across your test files.
+
+While there this more code in this structure, it helps improve the stability and maintainability of tests which is more important.
 
 ## AngularJS
 
