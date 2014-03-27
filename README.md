@@ -380,8 +380,6 @@ All low level unit tests (non-UI) MUST be written with the Mocha/Chai/Sinon libr
 | | | |-- session-factory.js
 ```
 
-If you have a piece of code that has both javascript code and UI elements, the javascript code should be tested with Karma however Karma test should never have any tests that are done against mocked HTML.
-
 You must use the ```expect``` BDD style of the Chai library.
 
 ```javascript
@@ -427,10 +425,6 @@ Anything that you might want to include in all the test files (variables, page o
 | | | |-- user-card/
 |-- Dalekfile.json
 ```
-
-If you have a piece of code that has both javascript code and UI elements, the UI elements should be tested with Dalek.  There will probably be a little it of overlap with the Karma tests but doing this will help determine with the problem is.
-
-Just as an example, if you have a Karma test that verifies that a component is properly loading data however the data is not displaying on the page in the Dalek test, then you know something in wrong with the display code (possibly the HTML) and not the javascript logic that load the data.
 
 ##### Page/Component Objects
 
