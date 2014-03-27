@@ -486,8 +486,8 @@ module.exports = LiveChatComponent;
 
 
 //file: /dalek/lib/objects/pages/home.js
-var BasePageObject = require('./base-page-object');
-var LiveChatComponent = require('./components/live-chat');
+var BasePageObject = require('../base-page-object');
+var LiveChatComponent = require('../components/live-chat');
 
 var HomePage = BasePageObject.extend({
   initialize: function(test, urlAppend) {
