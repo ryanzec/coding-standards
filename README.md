@@ -365,6 +365,22 @@ if(user.isActive == true) {
 }
 ```
 
+### Documentation
+
+General object, method, function, variable, etc... naming should be done in a way so that the code it pretty good at self documenting itself however if you find yourself write a complex piece of logic, please add inline documentation to the code.
+
+#### DocBlock
+
+TBD
+
+#### Special Comments
+
+There are a few special comment that should be added when the situation arises:
+
+- Hacks: When writing code that you know is hacky, piece add a comment starting with ```//HACK: ``` and then describe why you are writing hacky code
+- Todo: If when writing code you think of something that should be done but can't do it then, add a comment starting with ```//TODO: ``` and the describe what need to be done
+- Mocked Data: If you are mocking data in application code, add comment beginning with ```///MOCKEDDATA: ``` and describe why you are mocking the data (this does not apply to code speicific for UI unit testing mocks
+
 ### Testing
 
 #### Low Level Unit Testing (Karma)
@@ -425,6 +441,19 @@ Anything that you might want to include in all the test files (variables, page o
 | | | |-- user-card/
 |-- Dalekfile.json
 ```
+
+##### Mocking Data
+
+The UI unit tests should run against mocked in order to make sure they run as fast as possible.  The mocked data should in defined in a separate file called ui-testing-config.js and the should live at the root of your javascript application code.
+
+```
+|-- app/
+| |-- components/
+| |-- applicationl.js
+| |-- ui-testing-config.js
+```
+
+Separating the file out allow you to only include that code when the application in in UI testing mode (which could be indicated by a query string parameter or a custom HTTP HEADER).
 
 ##### Page/Component Objects
 
