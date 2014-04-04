@@ -385,7 +385,7 @@ There are a few special comment that should be added when the situation arises:
 
 #### Low Level Unit Testing (Karma)
 
-All low level unit tests (non-UI) MUST be written with the Mocha/Chai/Sinon libraries and executed with the Karma test runner.  The test files themselves should live in a folder called tests that is in the folder with the code it is testing.  The test files should be the same name of the files that it is testing along with .spec.js at the end.
+All low level unit tests (non-DOM) MUST be written with the Mocha/Chai/Sinon libraries and executed with the Karma test runner.  The test files themselves should live in a folder called tests that is in the folder with the code it is testing.  The test files should be the same name of the files that it is testing along with .spec.js at the end.
 
 ```
 |-- app/
@@ -418,7 +418,7 @@ expect(test).to.eql(expectedObject);
 
 #### UI Unit Testing (DalekJS)
 
-All UI unit tests MUST be written with DalekJS.  All the tests should live in a folder called dalek that live at the root directory of the project.  The test files should be named in a way where the user can tell what the file is testing just by the name.
+All DOM unit tests MUST be written with DalekJS.  All the tests should live in a folder called dalek that live at the root directory of the project.  The test files should be named in a way where the user can tell what the file is testing just by the name.
 
 Anything that you might want to include in all the test files (variables, page objects, etc...), that should be put into the lib folder in the dalek folder.
 
@@ -868,7 +868,7 @@ angular.module('app.users')
 
 ### Directives
 
-The file the directive is defined in should end with ```-directive.js```.
+Directives should be split into two parts, the directive and the directive controller.  The file with the directives should end with ```-directive.js``` and the file with the directive controller should end with ```-controller.js``` just like other controllers.
 
 ```
 |-- index.html
@@ -882,8 +882,17 @@ The file the directive is defined in should end with ```-directive.js```.
 | | | | | |-- _styles.scss
 | | | | | |-- _user-card.scss
 | | | |-- module.js
+| | | |-- user-card-controller.js
 | | | |-- user-card-directive.js
 ```
+
+#### Directive Controller
+
+The directive controller is responsible for attaching all non-DOM related functionality to the $scope.  This is done so that unit tests can easily be written against the directive controller without having to mock HTML which is not allowed in Karma unit tests.
+
+#### Directive
+
+The directive is responsible for all DOM related functionality.
 
 ### Services/Factories/Providers
 
