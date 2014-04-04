@@ -868,7 +868,7 @@ angular.module('app.users')
 
 ### Directives
 
-Directives should be split into two parts, the directive and the directive controller.  The file with the directives should end with ```-directive.js``` and the file with the directive controller should end with ```-controller.js``` just like other controllers.
+Directives should be split into two parts, the directive and the directive controller.  The file with the directives should end with ```-directive.js``` and the file with the directive controller should end with ```-controller.js``` just like other controllers.  Directive controller names should end with ```DCtrl``` to distinguish them from regular regular controllers. 
 
 ```
 |-- index.html
