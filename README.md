@@ -416,6 +416,26 @@ expect(test).to.deep.equal(expectedObject);
 expect(test).to.eql(expectedObject);
 ```
 
+Describe's and it's should be typed in all lowercase.
+
+```javascript
+//good
+describe('login controller', function(){
+  //...
+  it('should load login form', function() {
+    //..
+  });
+});
+
+//bad
+describe('Login Controller', function(){
+  //...
+  it('Should load login form', function() {
+    //..
+  });
+});
+```
+
 #### UI Unit Testing (DalekJS)
 
 All DOM unit tests MUST be written with DalekJS.  All the tests should live in a folder called dalek that live at the root directory of the project.  The test files should be named in a way where the user can tell what the file is testing just by the name.
