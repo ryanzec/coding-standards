@@ -1256,3 +1256,21 @@ Always use a ```<label>``` for each form field and use the ```for``` attribute t
 ```
 
 Tables must not be use for layout, only used for tabular
+
+### Formatting
+
+When an element has more than 3 attributes or the line exceeds the maximum length, the first attribute should be place on the same line as the tag and each attribute should line up with the first attribute and be on it's own line for readability.
+
+```html
+<!-- good -->
+<div nag-extend-text="lastNameOptions"
+     data-id="textarea"
+     data-model="extendTextResettableObject"
+     data-type="textarea"
+     data-model-property="lastName">
+</div>
+
+<!-- bad -->
+<div nag-extend-text="lastNameOptions" data-id="textarea" data-model="extendTextResettableObject" data-type="textarea" data-model-property="lastName">
+</div>
+```
