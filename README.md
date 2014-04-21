@@ -88,7 +88,7 @@ var someObject = (function() {
   return {
     //...
   };
-}());
+})();
 
 //bad
 var someObject = (function() {
@@ -96,7 +96,7 @@ var someObject = (function() {
     _privateData: 123
     //...
   };
-}());
+})();
 ```
 
 Names SHOULD be descriptive as possible without making the name too long
@@ -152,7 +152,7 @@ var someObject = (function() {
   return {
     //...
   };
-}());
+})());
 
 //bad
 var someObject = (function() {
@@ -162,7 +162,7 @@ var someObject = (function() {
     },
     //...
   };
-}());
+})();
 ```
 
 Names SHOULD be descriptive as possible without making the name too long (ex. use doSomething() instead of dst())
@@ -363,6 +363,14 @@ if(user.isActive === true) {
 if(user.isActive == true) {
   //...
 }
+```
+
+### Immediately-Invoked Function Expression (IIFE)
+
+When creating an IIFE, the function inself should always be wrapped with-in parathenes and executing parathenes should be on the outside of the wrapping parathenes (this is to prevent possible weirdness which is detailed (https://github.com/airbnb/javascript/issues/21#issuecomment-10203921)[here]).
+
+```javascript
+
 ```
 
 ### Documentation
