@@ -367,9 +367,22 @@ if(user.isActive == true) {
 
 ### Immediately-Invoked Function Expression (IIFE)
 
-When creating an IIFE, the function inself should always be wrapped with-in parathenes and executing parathenes should be on the outside of the wrapping parathenes (this is to prevent possible weirdness which is detailed (https://github.com/airbnb/javascript/issues/21#issuecomment-10203921)[here]).
+When creating an IIFE, the function inself should always be wrapped with-in parathenes and executing parathenes should be on the outside of the wrapping parathenes (this is to prevent possible weirdness which is detailed https://github.com/airbnb/javascript/issues/21#issuecomment-10203921).
 
 ```javascript
+//good
+(function() {
+  //code...
+})();
+
+//bad
+function() {
+  //code...
+}();
+
+(function() {
+  //code...
+}());
 
 ```
 
