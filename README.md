@@ -990,29 +990,19 @@ Values and Constants should be defined once per component in a file called ```va
 
 #### Karma Tests
 
-The following components will always have Karma tests and not Dalek tests since they never directly deal with the UI
+The following components will always have Karma tests and not Dalek tests since they never directly deal with the UI:
 
 - services
 - filters
-- values
-
-The following components may have Karma tests however they should never be using mocked HTML, they should only test the functionality of the javascript (leave the HTML based tests to Dalek):
-
-- controllers
-- directives
+- page/directive controllers
 
 #### DalekJS Tests
 
-The following components should never have Dalek specific tests as they should never directly interact with the UI:
+The following components will always have DalekJS tests and not Karma tests since they directly deal with the UI:
 
-- services
-- filters
-- values
-
-The following should always have Dalek tests as will always interact with the UI however Dalek should only be testing the visual aspect of these components as Karma will handle testing the javascript functionality.
-
-- controllers
 - directives
+
+You should also have DalekJS tests for the output of the application (the output of the page controllers).
 
 ## SASS/CSS
 
