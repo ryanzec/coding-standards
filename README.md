@@ -930,7 +930,7 @@ Directives should be split into two parts, the directive and the directive contr
 
 #### Directive Controller
 
-The directive controller is responsible for attaching all non-DOM related functionality to the $scope.  This is done so that unit tests can easily be written against the directive controller without having to mock HTML which is not allowed in Karma unit tests.
+The directive controller is responsible for attaching all non-DOM related functionality to the $scope.  This is done so that unit tests can easily be written against the directive controller without having to mock HTML which is not allowed in Karma unit tests (because of standards and not technical limitations of DalekJS).
 
 #### Directive
 
