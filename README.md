@@ -77,7 +77,7 @@ var BASE_URL = 'http://www.example.com';
 var baseRrl = 'http://www.example.com';
 ```
 
-If you which to keep a variable private, use a closure instead of prefixing with underscore
+If you which to keep a variable/method private, use a closure.
 
 ```javascript
 //good
@@ -89,11 +89,20 @@ var someObject = (function() {
     //...
   };
 })();
+```
 
-//bad
+When you use prototypical inheritance (using Object.create() instead of new to create an object), sometimes you want to have functionality of base object available to the new object but you don't want it used publicly.  Use closures would not work since it would not be avaiable to the extend class.
+
+In this case, use an leading underscore as an *internal use* indicator.  This will allow extending object access to it but provide a safety from external use (safety as in you it is still available to use public, but if you use something with a leading underscore and you don't know what you are doing, you might shot yourself in the foot). 
+
+```javascript
+//good
 var someObject = (function() {
   return {
-    _privateData: 123
+    _internalData: 123,
+    _internalMEthod: function() {
+     //...
+    },
     //...
   };
 })();
