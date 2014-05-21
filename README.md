@@ -91,16 +91,16 @@ var someObject = (function() {
 })();
 ```
 
-When you use prototypical inheritance (using Object.create() instead of new to create an object), sometimes you want to have functionality of base object available to the new object but you don't want it used publicly.  Use closures would not work since it would not be avaiable to the extend class.
+Sometimes you want to have functionality of base object available to the new object (generally when using Object.create() to create a new object) but you don't want it used publicly.  Using closures would not work since it would not be avaiable to the extending class.
 
-In this case, use an leading underscore as an *internal use* indicator.  This will allow extending object access to it but provide a safety from external use (safety as in you it is still available to use public, but if you use something with a leading underscore and you don't know what you are doing, you might shot yourself in the foot). 
+In this case, use an leading underscore as an *internal use* indicator.  This will allow extending objects access to it but provide a safety net from public use (safety as in it is still available to use publicly, but if you use something with a leading underscore and you don't know what you are doing, you might shot yourself in the foot). 
 
 ```javascript
 //good
 var someObject = (function() {
   return {
     _internalData: 123,
-    _internalMEthod: function() {
+    _internalMethod: function() {
      //...
     },
     //...
