@@ -57,6 +57,26 @@ MUST be named in all lowercase and use dashes in place of spaces (ex. something.
 
 ### Variables/Object Members
 
+Declare one variable per var and wherever they make sense.  It does not help readability and when let becomes available in browsers and NodeJS, it will be harder to refactor code to use let.
+
+```javascript
+//good
+var one = 1;
+var two = 2;
+
+for(var x = 0; x < two; x += 1) {
+  var three = 3;
+}
+
+//bad
+var one, two, x, three;
+two = 2;
+
+for(x = 0; x < two; x += 1) {
+  three = 3;
+}
+```
+
 All variables MUST use camelCase
 
 ```javascript
@@ -249,11 +269,13 @@ function add(one,two) {
 };
 ```
 
-Ternary operators (inline-ifs) MUST have spaces around both the ? and : operators.
+Ternary operators (inline-ifs) must be multi-lines
 
 ```javascript
 //good
-value = (data.length > 1) ? data[1] : data[0];
+value = (data.length > 1)
+  ? data[1] 
+  : data[0];
 
 //bad
 value = (data.length > 1)?data[1]:data[0];
