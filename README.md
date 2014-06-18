@@ -1123,6 +1123,26 @@ Form elements SHOULD have names that are camelCase so that they line up with how
 <input id="is-admin-user" type="checkbox" name="is_admin_user" /> Admin User
 ```
 
+SASS Variables should be named with dashes to keep is consistent to how CSS properties are named.
+
+```css
+/* good */
+$color-text: #DDDDDD;
+
+/* bad */
+$colorText: #DDDDDD;
+```
+
+SASS variables should be named from least specific (property) to most specific (component).
+
+```css
+/* good */
+$color-header-help-widget: #DDDDDD;
+
+/* bad */
+$help-widget-header-color: #DDDDDD;
+```
+
 ### Whitespace
 
 Tabs are NOT permitted at all.
