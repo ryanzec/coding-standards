@@ -639,7 +639,7 @@ While there this more code in this structure, it helps improve the stability and
 
 Page/Component objects should be exposing 2 kinds methods that are used in the actual tests, actions and assertions.  
 
-Action methods should be named as a statements with what you are interaction with.
+Action methods should be named with a verb and what you are interaction with.
 
 ```javascript
 /* good */
@@ -651,16 +651,16 @@ handle: function() {}
 type: function(characters) {} 
 ```
 
-Assertions methods should be named as questions.
+Assertions methods should be named as questions or statements.
 
 ```javascript
 /* good */
 isContentVisible: function() {}
-hasNotifications: function(count) {}
+chatIsOffline: function(count) {}
 
 /* bad */
 visible: function() {}
-notifications: function(count) {}
+offline: function(count) {}
 ```
 
 ## AngularJS
