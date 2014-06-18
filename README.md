@@ -635,6 +635,34 @@ You also have a place to normalize functionality that your application might nee
 
 While there this more code in this structure, it helps improve the stability and maintainability of tests which is more important.
 
+###### Method Naming
+
+Page/Component objects should be exposing 2 kinds methods that are used in the actual tests, actions and assertions.  
+
+Action methods should be named as a statements with what you are interaction with.
+
+```javascript
+/* good */
+clickHandle: function() {}
+typeIntoInput: function(characters) {}
+
+/* bad */
+handle: function() {}
+type: function(characters) {} 
+```
+
+Assertions methods should be named as questions.
+
+```javascript
+/* good */
+isContentVisible: function() {}
+hasNotifications: function(count) {}
+
+/* bad */
+visible: function() {}
+notifications: function(count) {}
+```
+
 ## AngularJS
 
 All the javascript standard apply to AngularJS code.  This section only contains standards that relate directly to AngularJS functionality.
