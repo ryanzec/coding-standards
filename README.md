@@ -1180,7 +1180,7 @@ Global variables should be defined in a file called `_variables.scss`.  You can 
 |-- _colors-variables.scss
 ```
 
-Variables that belongs to a specific component should always be defined with the root scope to prevent those variables from being used globally (which will come with SASS 3.4).  These variables should also be prefixrf with the component they belong to:
+Variables that belongs to a specific component should always be defined with the root scope to prevent those variables from being used globally (which will come with SASS 3.4).  These variables should also be prefixed with the component they belong to:
 
 ```css
 /* good */
