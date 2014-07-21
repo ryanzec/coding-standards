@@ -1165,10 +1165,37 @@ SASS variables should be named from least specific (property) to most specific (
 
 ```css
 /* good */
-$color-header-help-widget: #DDDDDD;
+$color-header-help: #DDDDDD;
 
 /* bad */
-$help-widget-header-color: #DDDDDD;
+$help-header-color: #DDDDDD;
+```
+
+### SASS Variable Scoping
+
+Global variables should be defined in a file called `_variables.scss`.  You can import other files however those files should only be defining variables and should end with `-variables.css`:
+
+```
+|-- _variables.scss
+|-- _colors-variables.scss
+```
+
+Variables that belongs to a specific component should always be defined with the root scope to prevent those variables from being used globally (which will come with SASS 3.4).  These variables should also be prefixrf with the component they belong to:
+
+```css
+/* good */
+.help {
+  $help-color-button: #DDDDDD;
+  
+  /* ... */
+}
+
+/* bad */
+$color-button: #DDDDDD;
+  
+.help {
+  /* ... */
+}
 ```
 
 ### Whitespace
