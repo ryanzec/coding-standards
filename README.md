@@ -1109,7 +1109,17 @@ All properties should have a space after the colon.
 .selector {
   color:$white;
 }
-``` 
+```
+
+You should avoid using `!important` but if you do have a need for it (there are time where it is ok to use), you must write a comment explaining why it is being used.
+
+```css
+/* good */
+width: 10px !important; /* overriding JS based styles */
+
+/* bad */
+width: 10px !important;
+```
 
 ### Files/Directories
 
