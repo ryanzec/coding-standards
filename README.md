@@ -1083,7 +1083,7 @@ You MUST never use inline styles
 
 All property definitions MUST end with a semi-colon.
 
-```css
+```scss
 /* good */
 .selector {
   color: $white;
@@ -1099,7 +1099,7 @@ All property definitions MUST end with a semi-colon.
 
 All properties should have a space after the colon.
 
-```css
+```scss
 /* good */
 .selector {
   color: $white;
@@ -1113,7 +1113,7 @@ All properties should have a space after the colon.
 
 You should avoid using `!important` but if you do have a need for it (there are time where it is ok to use), you must write a comment explaining why it is being used.
 
-```css
+```scss
 /* good */
 width: 10px !important; /* overriding JS based styles */
 
@@ -1123,7 +1123,7 @@ width: 10px !important;
 
 You should avoid unnecessary nesting when possible.
 
-```css
+```scss
 /* optimal */
 .user-widget {
     .content {
@@ -1201,7 +1201,7 @@ Form elements SHOULD have names that are camelCase so that they line up with how
 
 SASS Variables should be named with dashes to keep is consistent to how CSS properties are named.
 
-```css
+```scss
 /* good */
 $color-text: #DDDDDD;
 
@@ -1211,7 +1211,7 @@ $colorText: #DDDDDD;
 
 SASS variables should be named from least specific (property) to most specific (component).
 
-```css
+```scss
 /* good */
 $color-header-help: #DDDDDD;
 
@@ -1230,7 +1230,7 @@ Global variables should be defined in a file called `_variables.scss`.  You can 
 
 Variables that belongs to a specific component should always be defined with the root scope to prevent those variables from being used globally (which will come with SASS 3.4).  These variables should also be prefixed with the component they belong to:
 
-```css
+```scss
 /* good */
 .help {
   $help-color-button: #DDDDDD;
@@ -1252,7 +1252,7 @@ Tabs are NOT permitted at all.
 
 All code MUST be indented with 2 spaces
 
-```css
+```scss
 /* good */
 .selector {
   color: $white;
@@ -1268,7 +1268,7 @@ There MUST not be any spaces on blank lines
 
 Blank lines SHOULD be used to separate selector blocks
 
-```css
+```scss
 /* good */
 .selector {
   color: $white;
@@ -1291,7 +1291,7 @@ Blank lines SHOULD be used to separate selector blocks
 
 Opening braces MUST be at the end of the first line of the block statement.
 
-```css
+```scss
 /* good */
 .selector {
   color: $white;
@@ -1306,7 +1306,7 @@ Opening braces MUST be at the end of the first line of the block statement.
 
 Closing braces MUST be on a separate line and indented to match indentation of the opening brace's line.
 
-```css
+```scss
 /* good */
 .selector {
   color: $white;
@@ -1321,7 +1321,7 @@ Closing braces MUST be on a separate line and indented to match indentation of t
 
 You should alway document code that is not straight forward to understand or that is done in such a way for a specific reason even if it seems weird.
 
-```css
+```scss
 /* good */
 .selector {
   /* ... */
@@ -1341,7 +1341,7 @@ body {
 
 Avoid IDs whenever possible in selectors.
 
-```css
+```scss
 /* good */
 .user-page .item {
 }
@@ -1355,7 +1355,7 @@ Avoid IDs whenever possible in selectors.
 
 You SHOULD always use shorthand notion for properties that support where appropriate.
 
-```css
+```scss
 /* good */
 body {
   padding: 5px;
