@@ -1121,6 +1121,44 @@ width: 10px !important; /* overriding JS based styles */
 width: 10px !important;
 ```
 
+You should avoid unnecessary nesting when possible.
+
+```css
+/* optimal */
+.user-widget {
+    .content {
+        
+    }
+
+    //assuming li elements are styling the name in .user-widget (regardless of being in the .content)
+    li {...}
+
+    //assuming .name elements are styling the name in .user-widget (regardless of being in the .content or on a li)
+    .name {...}
+
+    //assuming .logout elements are styling the name in .user-widget (regardless of being in the .content or on a li)
+    .logout {...}
+
+    //assuming a elements are styling the name in .user-widget (regardless of being in the .content)
+    a {...}
+}
+
+/* not optimal */
+.user-widget {
+    .content {
+        li {
+            ...
+
+            &.name {...}
+
+            &.logout {...}
+
+            a {...}
+        }
+    }
+}
+```
+
 ### Files/Directories
 
 MUST be named in all lowercase and use dashes in place of spaces.
