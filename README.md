@@ -1159,6 +1159,27 @@ You should avoid unnecessary nesting when possible.
 }
 ```
 
+### Mixins/Functions
+
+Mixin/Function parameters should always be maps.  This makes it easier when you want to add or remove parameters.
+
+```scss
+//good
+@function my-function($parameters: ()) {
+  $parameters: map-merge((
+    a: 1,
+    b: 2
+  ), $parameters);
+  
+  //...
+}
+
+//bad
+@function my-function($a: 1, $b: )) {
+  //...
+}
+```
+
 ### Files/Directories
 
 MUST be named in all lowercase and use dashes in place of spaces.
