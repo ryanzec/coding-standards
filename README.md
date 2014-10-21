@@ -421,6 +421,29 @@ function() {
 
 General object, method, function, variable, etc... naming should be done in a way so that the code it pretty good at self documenting itself however if you find yourself write a complex piece of logic, please add inline documentation to the code.
 
+#### Single/Multi-Lined Comments
+
+All single and multi-lined comments should use double slashes and should contain no spaces at the beginning.
+
+```javascript
+//good
+
+//this is a comments
+
+//this is a multi-lined
+//comment
+
+//bad
+
+// this is a commnet
+
+/*
+ *this is a mutli-lined
+ *comment
+ */ 
+
+```
+
 #### DocBlock
 
 TBD
