@@ -1134,6 +1134,27 @@ All properties should have a space after the colon.
 }
 ```
 
+All selectors should have a blank line before them for readability.
+
+```scss
+/* good */
+.pill {
+  border-radius: 999px !important;
+    
+  .svg-icon {
+    vertical-align: sub;
+  }
+}
+
+/* bad */
+.pill {
+  border-radius: 999px !important;
+  .svg-icon {
+    vertical-align: sub;
+  }
+}
+```
+
 You should avoid using `!important` but if you do have a need for it (there are time where it is ok to use), you must write a comment explaining why it is being used.
 
 ```scss
