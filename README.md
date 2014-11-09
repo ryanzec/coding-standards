@@ -42,6 +42,18 @@ var b = 2
 var c = 3
 ```
 
+### DOM Data Storage
+
+Always use `data-*` attributes to store data on a DOM element that you might later need to retrieve in JavaScript.  When dealing with these attributes, use the `*Attribute()` methods instead of the dataset as it provide better browser support and is faster (http://jsperf.com/html5-data-attribute-dataset-vs-getattribute).
+
+```javascript
+//good
+var dataId = node.getAttribute('data-id');
+
+//bad
+var dataId = node.dataset.id;
+```
+
 ### Files/Directories
 
 MUST be named in all lowercase and use dashes in place of spaces (ex. something.js, system-notifications.js)
