@@ -639,6 +639,44 @@ $color-header-help: #DDDDDD;
 $help-header-color: #DDDDDD;
 ```
 
+### Component Naming
+
+Component naming following a modified version of BEM naming.  All components should have a unique name used as the class name.
+
+```html
+<div class="content-box">
+</div>
+``` 
+
+An item of a component should be unique to that component and have its class name prefix with the component name and 2 underscores.
+
+```html
+<div class="content-box">
+  <header class="content-box__header">
+    Header
+    <span class="content-box__close"></span>
+  </header>
+  <div class="content-box__content">Component Content</div>
+</div>
+```
+
+Modifiers for the component of its items should be prefixed with a dash.
+
+```html
+<div class="content-box -no-header">
+  <div class="content-box__content">Component Content</div>
+</div>
+
+<div class="content-box">
+  <header class="content-box__header -with-icon -no-close">
+    Header
+  </header>
+  <div class="content-box__content">Component Content</div>
+</div>
+```
+
+Component item names should be made as unique as needed.  For example, if the entire component is only ever going to have 1 icon, then it `component-name__icon` should be the name of that icon however it it will possibly have a header and content icon then that items names should be `component-name__header-icon` and `component-name__content-icon`.
+
 ### SASS Variable Scoping
 
 Global variables should be defined in a file called `_variables.scss`.  You can import other files however those files should only be defining variables and should end with `-variables.css`:
