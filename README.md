@@ -4,6 +4,12 @@ These are the coding standards that I follow in the all of my coding whether it 
 
 **_These standards are a living document and will change as I continue to develop code._**
 
+## General
+
+### Packaging
+
+All javascript libraries are packaged with browserify.  Is it preferred to install javascript libraries through npm instead of bower and leave bower packages to styling libraries (SASS/CSS).
+
 ## JavaScript
 
 ### General
