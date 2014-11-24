@@ -1,4 +1,4 @@
-**These are old standards that have note been or will be updated as I longer do AngularJS development**
+**These are old standards that have noe been or will be updated as I no longer do AngularJS development**
 
 
 ## AngularJS
