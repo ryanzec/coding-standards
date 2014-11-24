@@ -109,23 +109,7 @@ var BASE_URL = 'http://www.example.com';
 var baseRrl = 'http://www.example.com';
 ```
 
-If you which to keep a variable/method private, use a closure.
-
-```javascript
-//good
-var someObject = (function() {
-  var privateData;
-  privateData = 123;
-
-  return {
-    //...
-  };
-})();
-```
-
-Sometimes you want to have functionality of base object available to the new object (generally when using Object.create() to create a new object) but you don't want it used publicly.  Using closures would not work since it would not be avaiable to the extending class.
-
-In this case, use an leading underscore as an *internal use* indicator.  This will allow extending objects access to it but provide a safety net from public use (safety as in it is still available to use publicly, but if you use something with a leading underscore and you don't know what you are doing, you might shot yourself in the foot). 
+You should mark "private" variables/methods with a leading underscore as an *internal use* indicator.  It is understood that anything marked with a leading underscore should not be used out of that module.  There are 2 reasons for doing this.  First is that if you create a new object from a base object using a leading underscore to mark *internal use*, the new object has access to that data which can be needed sometimes.  The other use is for testing.  Outside of these 2 use cases, anything marked with a leading underscore should not be used out of that module.
 
 ```javascript
 //good
@@ -178,32 +162,6 @@ var loggedInUser = new User();
 //bad
 var user = function(){...};
 var loggedInUser = new user();
-```
-
-If you which to keep a function private, use a closure instead of prefixing with underscore
-
-```javascript
-//good
-var someObject = (function() {
-  var doSomethingPrivate;
-  doSomethingPrivate = function() {
-    //...
-  };
-  
-  return {
-    //...
-  };
-})());
-
-//bad
-var someObject = (function() {
-  return {
-    _doSomethingPrivate: function() {
-      //...
-    },
-    //...
-  };
-})();
 ```
 
 Names SHOULD be descriptive as possible without making the name too long (ex. use doSomething() instead of dst())
