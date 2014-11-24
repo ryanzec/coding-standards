@@ -669,6 +669,7 @@ Modifiers for the component of its items should be prefixed with a dash.
 
 <div class="content-box">
   <header class="content-box__header -with-icon -no-close">
+    <span class="content-box__icon"></span>
     Header
   </header>
   <div class="content-box__content">Component Content</div>
