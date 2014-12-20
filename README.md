@@ -441,6 +441,23 @@ There are a few special comment that should be added when the situation arises:
 
 All code should be testable through Mocha using Chai for assertions and Sinon for javascript mocking when needed.  All code that requires a DOM should use the jsdom library to mock the DOM.  The nock library should be used to mock api requests.
 
+
+##### Sleeps
+
+There are reason when you might need to have a test sleep in the middle before doing an assertion.  An example might be a auto complete that has a delay before requesting results from an http request.  For these case, you should use the [co-sleep](https://www.npmjs.com/package/co-sleep) library.
+
+```javascript
+it('should wait 1 second before displaying', function(done) {
+  co(function*(){
+    component.type('test');
+    
+    yield sleep(10);
+    
+    expect(component.isDisplayed).to.be.true;
+  }).then(done, done);
+});
+```
+
 ## SASS/CSS
 
 ### General
