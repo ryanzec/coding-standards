@@ -441,6 +441,19 @@ There are a few special comment that should be added when the situation arises:
 
 All code should be testable through Mocha using Chai for assertions and Sinon for javascript mocking when needed.  All code that requires a DOM should use the jsdom library to mock the DOM.  The nock library should be used to mock api requests.
 
+Unit tests are designed to run fast and be easy to setup.  Unit tests are not designed to cover 100% of the code because there should also be functional/integration tests along with the unit tests that will provide a lot more coverage that your code works as a whole.  You should also be doing manually performance testing that will uncover other things too.
+
+##### What Not To Test
+
+Since we are mocking the DOM with jsdom, there are certain thing that should not be attempted to be tested. These are things that I know can't be tested or that I have had a hard time figuring out how to test.
+
+###### Positioning
+
+This relates to stuff like height, width, top, bottom, etc... and also include most CSS related stuff.
+
+###### Event Listener Cleanup
+
+Event listeners themselves can be tested however the cleanup process to make cure event listeners are properly removed is something that I have had issue with testing reliably.  This is something that should skip because the value it adds compared to the cost of testing it is not worth it in my opinion.
 
 ##### Sleeps
 
