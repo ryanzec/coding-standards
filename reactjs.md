@@ -63,3 +63,21 @@ var AutoComplete = require('./auto-complete.component.jsx');
 //bad
 var autoComplete = require('./auto-complete.component.jsx');
 ```
+
+Any method the returns a virtual dom must being with `render`
+
+```javascript
+//good
+renderInput: function() {
+  return (
+    <input />
+  );
+},
+
+//bad
+getInput: function() {
+  return (
+    <input />
+  );
+},
+```
