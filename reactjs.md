@@ -46,7 +46,7 @@ var AutoComplete = require('./auto-complete.component.jsx');
 var autoComplete = require('./auto-complete.component.jsx');
 ```
 
-Any method the returns a virtual dom must being with `render`.
+Any method the returns a virtual dom must begin with `render`.
 
 ```javascript
 //good
@@ -63,7 +63,7 @@ component.getInput = function() {
   );
 },
 ```
-Methods and properties of a components or mixins do not need leading underscore to note "private" since those methods and properties should only ever be used in the component itself.
+Methods and properties of a component or mixin do not need leading underscore to note "private" since those methods and properties should only ever be used in the component itself.
 
 ```javascript
 //good
@@ -81,7 +81,7 @@ component._onChange = function() {
 },
 ```
 
-You must allow specific the display name of the component.
+You must specify the display name of the component.
 
 ```javascript
 //good
