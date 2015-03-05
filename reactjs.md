@@ -198,10 +198,19 @@ var component = {};
 //display name
 component.displayName = 'Component';
 
-// mixins
+/mixins
 component.mixins = [myMixin];
 
-//lifecycle method
+//prop type definations
+component.propType = { ... };
+
+//default prop types
+component.getDefaultProps = function() { ... };
+
+//initial state
+component.getInitialState = function() { ... };
+
+//lifecycle methods
 component.componentDidMount: function() { ... };
 
 //custom properties
