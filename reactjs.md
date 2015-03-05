@@ -207,8 +207,11 @@ component.componentDidMount: function() { ... };
 //custom properties
 component.myCustomData = 'test';
 
-//custom methods
+//custom event methods
 component.onChange = function() { ... };
+
+//custom methods
+component.doSomething = function() { ... };
 
 //render method with the main render being last
 component.renderComplexItem = function() { ... };
@@ -216,4 +219,14 @@ component.renderComplexItem = function() { ... };
 component.render = function() { ... };
 
 module.export = React.createClass(component);
+```
+
+Event methods must start with `on` to indicate it is attached to an event.
+
+```javascript
+//good
+component.onChange = function() { ... };
+
+//bad
+component.change = function() { ... };
 ```
