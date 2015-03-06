@@ -432,8 +432,9 @@ There are a few special comment that should be added when the situation arises:
 
 - Hacks: When writing code that you know is hacky, piece add a comment starting with ```//HACK: ``` and then describe why you are writing hacky code
 - Todo: If when writing code you think of something that should be done but can't do it then, add a comment starting with ```//TODO: ``` and the describe what need to be done
-- Mocked Data: If you are mocking data in application code, add comment beginning with ```///MOCKEDDATA: ``` and describe why you are mocking the data (this does not apply to code speicific for UI unit testing mocks
-- Performance: When writing code that is specific for performance reasons  add comment beginning with ```///PERFORMANCE: ``` and describe how the code helps with performance
+- Mocked Data: If you are mocking data in application code, add comment beginning with ```//MOCKEDDATA: ``` and describe why you are mocking the data (this does not apply to code speicific for UI unit testing mocks
+- Performance: When writing code that is specific for performance reasons  add comment beginning with ```//PERFORMANCE: ``` and describe how the code helps with performance
+- Note: When writing something that might not be apparent (some piece of code that can't be refactored into a simple to understand method or comment got ignore code in liniting or coverage), you can add a note comment that begins with ```//NOTE:```
 
 ### Testing
 
