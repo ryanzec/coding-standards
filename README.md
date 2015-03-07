@@ -50,6 +50,22 @@ var b = 2
 var c = 3
 ```
 
+You can't have multiple line breaks in a round as they don't any any value.
+
+```javascript
+//good
+var test = 'test';
+
+if (test === 'test') {...}
+
+//bad
+var test = 'test';
+
+
+
+if (test === 'test') {...}
+```
+
 ### DOM Data Storage
 
 Always use `data-*` attributes to store data on a DOM element that you might later need to retrieve in JavaScript.  When dealing with these attributes, use the `*Attribute()` methods instead of the dataset as it provide better browser support and is faster (http://jsperf.com/html5-data-attribute-dataset-vs-getattribute).
@@ -152,23 +168,25 @@ var isActive;
 
 ### Function/Object Methods.
 
+Function must be camelCased.
+
 ```javascript
 //good
-var isActive = function(){...};
+var isActive = function isActive() {...};
 
 //bad
-var is_active = function(){...};
+var is_active = function is_active() {...};
 ```
 
 The exception to the rule is function constructors designed to be used with the new keyword, these functions MUST be pascal case.
 
 ```javascript
 //good
-var User = function(){...};
+var User = function User() {...};
 var loggedInUser = new User();
 
 //bad
-var user = function(){...};
+var user = function user() {...};
 var loggedInUser = new user();
 ```
 
@@ -176,15 +194,39 @@ Names SHOULD be descriptive as possible without making the name too long (ex. us
 
 ```javascript
 //good
-var doSomething = function(){...};
+var doSomething = function doSomething() {...};
 
 //bad
-var dst = function(){...};
+var dst = function dst() {...};
 ```
 
 Functions MUST NOT be reserved words or web browser built-in objects
 
 Functions SHOULD be named as actions or states (ex. parseResponse(), user.isActive())
+
+Function must be defined as expression instead of with a declaration.
+
+This helps keep code clean because when you try to call a function that has been create with a function expression, you get an error where if you call a function created with a declaration, it will work since all function declaration are processed before the actually javascript code itself is executed.  We want to make sure that functions are create before they are used for clarity.
+
+```javascript
+//good
+var doSomething = function doSomething() {...};
+
+//bad
+function doSomething() {...};
+```
+
+Function expression must always name the function too.
+
+Naming the function will make debugging easier as it will have a name instead of anonymous.
+
+```javascript
+//good
+var doSomething = function doSomething() {...};
+
+//bad
+var doSomething = function() {...};
+```
 
 ```javascript
 //good
@@ -397,7 +439,18 @@ function() {
 
 ### Documentation
 
-General object, method, function, variable, etc... naming should be done in a way so that the code it pretty good at self documenting itself however if you find yourself write a complex piece of logic, please add inline documentation to the code.
+General object, method, function, variable, etc... naming should be done in a way so that the code it pretty good at self documenting itself however if you find yourself write a complex piece of logic, add inline documentation to the code.
+
+All comment should be lowercase and not have a space between `//` and the first character unless they are a special comment listed below.
+
+```javascript
+//good
+//good comment
+
+//bad
+// bad comment
+//Bad comment
+```
 
 #### Single/Multi-Lined Comments
 
