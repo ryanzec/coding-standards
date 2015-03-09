@@ -289,16 +289,26 @@ function add(one,two) {
 };
 ```
 
-Ternary operators (inline-ifs) must be multi-lines
+Ternary operators (inline ifs) must have spaces between operators
 
 ```javascript
 //good
-value = (data.length > 1)
-  ? data[1] 
-  : data[0];
+value = (data.length > 1) ? data[1] : data[0];
 
 //bad
-value = (data.length > 1)?data[1]:data[0];
+value=(data.length>1)?data[1]:data[0];
+```
+
+Ternary operators (inline-ifs) must be multi-lines if they are too long
+
+```javascript
+//good
+value = (data.length > 1 && someOtherReallyLongVariableName !== anotherReallyLongVariableName)
+? someOtherReallyLongVariableName 
+: anotherReallyLongVariableName;
+
+//bad
+value = (data.length > 1 && someOtherReallyLongVariableName !== anotherReallyLongVariableName) ? someOtherReallyLongVariableName : anotherReallyLongVariableName;
 ```
 
 Semi-colons in for loops MUST be followed by a space.
