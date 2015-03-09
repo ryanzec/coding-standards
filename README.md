@@ -16,9 +16,9 @@ All javascript libraries are packaged with Browserify.  Is it preferred to insta
 
 Since all code will be packaged with Browserify, all code should be written in NodeJS/CommonJS style.
 
-These are the rules that MUST be applied to all JavaScript that is written. These rules do NOT apply when modifying 3rd party libraries/scripts, in that case you SHOULD following the coding style code of whatever code you are work with (or follow the appeared style of the file if the code does not have a style guide).  These rules apply for both browser and Node.js code. 
+These are the rules that must be applied to all JavaScript that is written. These rules do noT apply when modifying 3rd party libraries/scripts, in that case you should following the coding style code of whatever code you are work with (or follow the appeared style of the file if the code does not have a style guide).  These rules apply for both browser and Node.js code. 
 
-Line length MUST NOT exceed 160 characters.
+Line length must noT exceed 160 characters.
 
 Avoid adding to much to the global object, use object literals as namespaces.
 
@@ -36,7 +36,7 @@ var b = 2;
 var c = 3;
 ```
 
-You MUST always use a semi-colon at the end of every statement.
+You must always use a semi-colon at the end of every statement.
 
 ```javascript
 //good
@@ -80,7 +80,7 @@ var dataId = node.dataset.id;
 
 ### Files/Directories
 
-MUST be named in all lowercase and use dashes in place of spaces (ex. something.js, system-notifications.js)
+must be named in all lowercase and use dashes in place of spaces (ex. something.js, system-notifications.js)
 
 ```
 |-- app/
@@ -100,7 +100,7 @@ Declare one variable per var and wherever they make sense.  It does not help rea
 var one = 1;
 var two = 2;
 
-for(var x = 0; x < two; x += 1) {
+for (var x = 0; x < two; x += 1) {
   var three = 3;
 }
 
@@ -108,12 +108,12 @@ for(var x = 0; x < two; x += 1) {
 var one, two, x, three;
 two = 2;
 
-for(x = 0; x < two; x += 1) {
+for (x = 0; x < two; x += 1) {
   three = 3;
 }
 ```
 
-All variables MUST use camelCase
+All variables must use camelCase
 
 ```javascript
 //good
@@ -123,7 +123,7 @@ var createdDateTime;
 var created_date_time;
 ```
 
-Constants MUST use all upper case with underscore in place of spaces
+Constants must use all upper case with underscore in place of spaces
 
 ```javascript
 //good
@@ -148,7 +148,7 @@ var someObject = (function() {
 })();
 ```
 
-Names SHOULD be descriptive as possible without making the name too long
+Names should be descriptive as possible without making the name too long
 
 ```javascript
 //good
@@ -158,7 +158,7 @@ var query;
 var q;
 ```
 
-Variables SHOULD be named as nouns or states
+Variables should be named as nouns or states
 
 ```javascript
 //good
@@ -178,7 +178,7 @@ var isActive = function isActive() {...};
 var is_active = function is_active() {...};
 ```
 
-The exception to the rule is function constructors designed to be used with the new keyword, these functions MUST be pascal case.
+The exception to the rule is function constructors designed to be used with the new keyword, these functions must be pascal case.
 
 ```javascript
 //good
@@ -190,7 +190,7 @@ var user = function user() {...};
 var loggedInUser = new user();
 ```
 
-Names SHOULD be descriptive as possible without making the name too long (ex. use doSomething() instead of dst())
+Names should be descriptive as possible without making the name too long (ex. use doSomething() instead of dst())
 
 ```javascript
 //good
@@ -200,9 +200,9 @@ var doSomething = function doSomething() {...};
 var dst = function dst() {...};
 ```
 
-Functions MUST NOT be reserved words or web browser built-in objects
+Functions must noT be reserved words or web browser built-in objects
 
-Functions SHOULD be named as actions or states (ex. parseResponse(), user.isActive())
+Functions should be named as actions or states (ex. parseResponse(), user.isActive())
 
 Function must be defined as expression instead of with a declaration.
 
@@ -236,46 +236,46 @@ var isActive = function(){...};
 
 ### Whitespace
 
-Tabs are NOT permitted at all.
+Tabs are noT permitted at all.
 
-All code MUST be indented with 2 spaces.
+All code must be indented with 2 spaces.
 
 ```javascript
 //good
-if(a === b) {
+if (a === b) {
   test = true;
 }
 
 //bad
-if(a === b) {
+if (a === b) {
     test = true;
 }
 ```
 
-There MUST not be any spaces on blank lines.
+There must not be any spaces on blank lines.
 
-Blanks lines SHOULD be used to separate blocks of logic.
+Blanks lines should be used to separate blocks of logic.
 
 ```javascript
 //good
-if(a === b) {
+if (a === b) {
   test = true;
 }
 
-if(c === d) {
+if (c === d) {
   test = false;
 }
 
 //bad
-if(a === b) {
+if (a === b) {
   test = true;
 }
-if(c === d) {
+if (c === d) {
   test = false;
 }
 ```
 
-Commas MUST be followed by a space.
+Commas must be followed by a space.
 
 ```javascript
 //good
@@ -311,21 +311,21 @@ value = (data.length > 1 && someOtherReallyLongVariableName !== anotherReallyLon
 value = (data.length > 1 && someOtherReallyLongVariableName !== anotherReallyLongVariableName) ? someOtherReallyLongVariableName : anotherReallyLongVariableName;
 ```
 
-Semi-colons in for loops MUST be followed by a space.
+Semi-colons in for loops must be followed by a space.
 
 ```javascript
 //good
-for(x = 0; x < data.length; x += 1) {
+for (x = 0; x < data.length; x += 1) {
   //...
 }
 
 //bad
-for(x =0;x < data.length;x += 1) {
+for (x =0;x < data.length;x += 1) {
   //...
 }
 ```
 
-Operands and operators MUST be separated by spaces.
+Operands and operators must be separated by spaces.
 
 ```javascript
 //good
@@ -335,93 +335,93 @@ x = 1 + 2;
 x=1+2;
 ```
 
-There MUST be NO space between the conditional and opening parentheses.
+There must be no space between the conditional and opening parentheses.
 
 ```javascript
 //good
-for(x = 0; x < data.length; x == 1) {
+for (x = 0; x < data.length; x == 1) {
   //...
 }
 
 //bad
-for (x = 0; x < data.length; x == 1) {
+for(x = 0; x < data.length; x == 1) {
   //...
 }
 ```
 
-There MUST be a space between the closing parentheses and the open braces.
+There must be a space between the closing parentheses and the open braces.
 
 ```javascript
 //good
-for(x = 0; x < data.length; x == 1) {
+for (x = 0; x < data.length; x == 1) {
   //...
 }
 
 //bad
-for(x = 0; x < data.length; x == 1){
+for (x = 0; x < data.length; x == 1){
   //...
 }
 ```
 
 ### Braces
 
-All block structures including if, else, switch, try, catch, function, while, for, and so on MUST use braces around body.
+All block structures including if, else, switch, try, catch, function, while, for, and so on must use braces around body.
 
 ```javascript
 //good
-if(user.isActive === true) {
+if (user.isActive === true) {
   //...
 }
 
 //bad
-if(user.isActive === true)
+if (user.isActive === true)
   //...
 ```
 
-Opening braces MUST be at the end of the first line of the block statement.  Closing braces MUST be on a separate line and indented to match indentation of the opening brace's line.
+Opening braces must be at the end of the first line of the block statement.  Closing braces must be on a separate line and indented to match indentation of the opening brace's line.
 
 ```javascript
 //good
-if(user.isActive === true) {
+if (user.isActive === true) {
   //...
 }
 
 //bad
-if(user.isActive)
+if (user.isActive)
 {
   //...
 }
 
-if(user.isActive === true) {
+if (user.isActive === true) {
   test = true;}
 ```
 
 ### Conditionals
 
-You MUST always specific the values for the conditional
+You must always specific the values for the conditional
 
 ```javascript
 //good
-if(user.isActive === true) {
+if (user.isActive === true) {
   //...
 }
 
 //bad
-if(user.isActive) {
+if (user.isActive) {
   //...
 }
 ```
 
-You SHOULD use an exact conditional whenever possible
+You should use an exact conditional whenever possible
 
 ```javascript
 //good
-if(user.isActive === true) {
+if (user.isActive === true) {
   //...
 }
 
 //bad
-if(user.isActive == true) {
+if (user.isActive == true) {
   //...
 }
 ```
@@ -539,11 +539,11 @@ it('should wait 1 second before displaying', function(done) {
 
 ### General
 
-These are the rules that MUST be applied to all SASS/CSS that is written. These rules do NOT apply when modifying 3rd party libraries/scripts, in that case you SHOULD following the coding style code of whatever code you are work with (or follow the appeared style of the file if the code does not have a style guide). 
+These are the rules that must be applied to all SASS/CSS that is written. These rules do noT apply when modifying 3rd party libraries/scripts, in that case you should following the coding style code of whatever code you are work with (or follow the appeared style of the file if the code does not have a style guide). 
 
-Line length MUST NOT exceed 160 characters 
+Line length must noT exceed 160 characters 
 
-You MUST never use inline styles 
+You must never use inline styles 
 
 ```html
 <!-- good -->
@@ -553,7 +553,7 @@ You MUST never use inline styles
 <span style="color: red;">...</span>
 ```
 
-All property definitions MUST end with a semi-colon.
+All property definitions must end with a semi-colon.
 
 ```scss
 /* good */
@@ -675,14 +675,14 @@ Mixin/Function parameters should always be maps.  This makes it easier when you 
 
 ### Files/Directories
 
-MUST be named in all lowercase and use dashes in place of spaces.
+must be named in all lowercase and use dashes in place of spaces.
 
 ```
 |-- main.sass
 |-- _system-notifications.sass
 ```
 
-SASS files that will not be compiled into is own CSS file MUST start with an underscore.
+SASS files that will not be compiled into is own CSS file must start with an underscore.
 
 ```
 |-- main.css
@@ -692,7 +692,7 @@ SASS files that will not be compiled into is own CSS file MUST start with an und
 
 ### Naming
 
-All classes and ids MUST be named with lowercase and dashes to separate words.
+All classes and ids must be named with lowercase and dashes to separate words.
 
 ```html
 <!-- good -->
@@ -702,7 +702,7 @@ All classes and ids MUST be named with lowercase and dashes to separate words.
 <button id="user_submit_form" class="PRIMARY isActive"></span>
 ```
 
-Form elements SHOULD have names that are camelCase so that they line up with however variables are names in JavaScript/PHP.
+Form elements should have names that are camelCase so that they line up with however variables are names in JavaScript/PHP.
 
 ```html
 <input id="type-id" type="text" name="typeId" />
@@ -801,9 +801,9 @@ $color-button: #DDDDDD;
 
 ### Whitespace
 
-Tabs are NOT permitted at all.
+Tabs are noT permitted at all.
 
-All code MUST be indented with 2 spaces
+All code must be indented with 2 spaces
 
 ```scss
 /* good */
@@ -817,9 +817,9 @@ All code MUST be indented with 2 spaces
 }
 ```
 
-There MUST not be any spaces on blank lines
+There must not be any spaces on blank lines
 
-Blank lines SHOULD be used to separate selector blocks
+Blank lines should be used to separate selector blocks
 
 ```scss
 /* good */
@@ -842,7 +842,7 @@ Blank lines SHOULD be used to separate selector blocks
 
 ### Braces
 
-Opening braces MUST be at the end of the first line of the block statement.
+Opening braces must be at the end of the first line of the block statement.
 
 ```scss
 /* good */
@@ -857,7 +857,7 @@ Opening braces MUST be at the end of the first line of the block statement.
 }
 ```
 
-Closing braces MUST be on a separate line and indented to match indentation of the opening brace's line.
+Closing braces must be on a separate line and indented to match indentation of the opening brace's line.
 
 ```scss
 /* good */
@@ -906,7 +906,7 @@ Avoid IDs whenever possible in selectors.
 
 ### Properies
 
-You SHOULD always use shorthand notion for properties that support where appropriate.
+You should always use shorthand notion for properties that support where appropriate.
 
 ```scss
 /* good */
