@@ -66,6 +66,26 @@ var test = 'test';
 if (test === 'test') {...}
 ```
 
+### Debug Code
+
+It is often useful to be able to `console.log()` things in the application while developing however you don't want these logs to show up in production.  It can also be annoying having to add/remove this type of code all the time.  Instead of doing that, since all code should be using Browserify, you can use the Envify trasnformer and wrap all debug style code in blocks like this:
+
+```javascript
+if (process.env.NODE_ENV !== 'production') {
+  //you debug code here
+}
+```
+
+When building the production version of the code, make sure the NODE_ENV is set to production and it will make that code look like this:
+
+```javascript
+if ('production' !== 'production') {
+  //you debug code here
+}
+```
+
+When that code then gets processed by UglifyJS, it will be removed since it is a dead code.
+
 ### DOM Data Storage
 
 Always use `data-*` attributes to store data on a DOM element that you might later need to retrieve in JavaScript.  When dealing with these attributes, use the `*Attribute()` methods instead of the dataset as it provide better browser support and is faster (http://jsperf.com/html5-data-attribute-dataset-vs-getattribute).
