@@ -239,3 +239,5 @@ component.onChange = function() { ... };
 //bad
 component.change = function() { ... };
 ```
+
+TODO: Event handlers with passable parameters 
