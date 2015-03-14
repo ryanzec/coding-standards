@@ -216,11 +216,11 @@ component.componentDidMount: function() { ... };
 //custom properties
 component.myCustomData = 'test';
 
-//custom event methods
-component.onChange = function() { ... };
-
 //custom methods
 component.doSomething = function() { ... };
+
+//custom event methods
+component.onChange = function() { ... };
 
 //render method with the main render being last
 component.renderComplexItem = function() { ... };
