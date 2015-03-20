@@ -241,3 +241,43 @@ component.change = function() { ... };
 ```
 
 TODO: Event handlers with passable parameters 
+
+Sometimes on a page component you are going to want to make sure that certain data is available before loading the page and you will use the `willTransitionTo` static method that the react router uses.  This type of data should be stored in an object called `preLoadedData` that is private to the file and is then used it to load the initial state of the page component.  Then the page component should only ever use the state and not the `preLoadedData` variable.
+
+```javascript
+//...
+var preLoadedData = {};
+
+pageComponent.statics = {
+  willTransitionTo: function withResolvesComponentWillTransitionTo(transition, params, query, callback) {
+    userStore.getUser(124).then(function(user) {
+      preLoadedData.user = user;
+      callback();
+    });
+  }
+};
+
+pageComponent.getInitialState = function pageComponentGetInitialState() {
+  return {
+    user: preLoadedData.user
+  };
+};
+
+pageComponent.renderUserData = function pageComponentRenderUserData() {
+  var userData = null;
+
+  if (this.state.user) {
+    userData = (
+      <ul>
+        <li className="user-id">{this.state.user.id}</li>
+        <li className="user-username">{this.state.user.username}</li>
+        <li className="user-first-name">{this.state.user.firstName}</li>
+        <li className="user-last-name">{this.state.user.lastName}</li>
+      </ul>
+    );
+  }
+
+  return userData;
+};
+//...
+```
