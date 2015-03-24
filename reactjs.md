@@ -198,7 +198,10 @@ var component = {};
 //display name
 component.displayName = 'Component';
 
-/mixins
+//statics
+components.statics = {...};
+
+//mixins
 component.mixins = [myMixin];
 
 //prop type definations
