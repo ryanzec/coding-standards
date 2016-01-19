@@ -66,6 +66,20 @@ var test = 'test';
 if (test === 'test') {...}
 ```
 
+### Converting Methods
+
+When you have a method that converts one data structure to another, that method must start with `as`:
+
+```javascript
+//good
+someObject.asArray = function() {...}
+var myObjectAsJson = function() {...}
+
+//bad
+someObject.toArray = function() {...}
+var myObjectToJson = function() {...}
+```
+
 ### Debug Code
 
 It is often useful to be able to `console.log()` things in the application while developing however you don't want these logs to show up in production.  It can also be annoying having to add/remove this type of code all the time.  Instead of doing that, since all code should be using Browserify, you can use the Envify trasnformer and wrap all debug style code in blocks like this:
